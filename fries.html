@@ -1,0 +1,229 @@
+<html>
+<head>
+
+  <meta name="viewport" content="initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+         crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.css">
+<style>
+     @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lato';
+      }
+      a {
+          text-decoration: none;
+      }
+      a.logo {
+          color: white;
+          font-size: 18px;
+          padding-bottom: 20px;
+          display: inline-block;
+          }
+      nav {
+      padding: 20px;
+      background: black;
+      }
+      .nav-2 {
+        position: fixed;
+        z-index: 3;
+      }
+      h1,p.ipa {
+        text-align: center;
+        }
+      p {
+        font-size: 18px;
+        }
+      p.ipa {
+       font-size: 18px;
+       color: #0077AA;
+       margin-top: -10px;
+       padding: 0;
+       }
+      h1 {
+       padding: 0;
+       margin: 0;
+     }
+     .term {
+       padding-top: 30px;
+       font-size: 60px;
+       }
+      input[type="search"] {
+       height: 40px;
+       font-size: 20px;
+       padding-left: 30px;
+       margin-left: 80px;
+       -webkit-appearance: none;
+      }
+      .fa.fa-play {
+        font-size: 20px;
+      }
+      .term-row {
+        padding: 30px 0px;
+        }
+      video {
+      max-height: 200px;
+      margin: 0 auto;
+      text-align: center;
+      }
+      .container, .container-fluid {
+      }
+      h2.section {
+      padding-bottom: 20px;
+      }
+      .row {
+        padding: 30px 0px;
+        border-bottom: solid 1px #EFEFEF;
+      }
+      h4.lessons {
+        font-weight: 700;
+        }
+      sup {
+      font-size: 12px;
+      margin: -2px;
+      color: blue;
+      cursor: pointer;
+      }
+      .fa-play {
+        cursor: pointer;
+      }
+      select {
+        color: black;
+        margin-top: 10px;
+      }
+      .input-group-addon {
+        color: yellow;
+        border: black;
+        background-color: #555;
+        cursor: pointer;
+        }
+      .selected {
+        position: fixed;
+        width: 100%;
+        padding-top: 10px;
+        background: yellow;
+        z-index: 3;
+        }
+        .ipa-info {
+          padding: 0;
+          margin: 0;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+
+<body>
+  
+  <nav class="nav-2">
+   <a class="logo" href="#">smoothtalk</a>
+<div class="input-group">
+   <input type="text" list="mylist" class="awesomeplete form-control" placeholder="Search and check a word's pronunciation"></input>
+      <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i>
+      </span>
+      </div>
+   </nav>
+  <nav>
+   <a class="logo" href="#">smoothtalk</a>
+<div class="input-group">
+   <input type="text" list="mylist" class="awesomeplete form-control" placeholder="Search and check a word's pronunciation"></input>
+      <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i>
+      </span>
+      </div>
+   </nav>
+   <div class="selected">
+     <p> Viewing pronunciation for <b>police</b></p>
+   </div>
+  <datalist id="mylist">
+    <option>fries</option>
+    <option>lice</option>
+    <option>rice</option>
+    <option>pies</option>
+    <option>priority</option>
+    <option>pasta</option>
+    <option>banana</option>
+    <option>bore</option>
+    <option>police</option>
+    <option>poodle</option>
+  </datalist>
+  <div class="container-fluid">
+  <div class="row term-row">
+  <div class="col-xs-12">
+  <h1 class="term"> police <i class="fa fa-play"></i> </h1>
+  <p class="ipa"> po  <b>li:s</b><sup class="ipa-info">?</sup></li>
+ </div> 
+ </div>
+ <div class="row">
+ <div class="col-xs-12">
+  <h2 class="section"> See & Hear It </h2>
+  <video src="https://firebasestorage.googleapis.com/v0/b/accentfocus.appspot.com/o/initial-r%2Fr-pronunciation.mp4?alt=media&token=79907211-fbba-42a2-ac64-503d1df3cd6c" controls></video>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-12">
+  <h2 class="section"> Practice It</h2>
+  <p>This word has <b>7 </b>phonemes.<sup>huh?</sup> </p>
+  <p> If you have been having trouble being understood or with saying this word, check out the following tips and links to lessons below for each of the phonemes. </p>
+  <div class="alert alert-info">
+  <p> <strong>Pick a language</strong> for more precise suggestions</p>
+  <select>
+  <option> Arabic</option>
+  <option> Mandarin</option>
+  <option> Somali </option>
+  <option> Swahili </option>
+  <option> Hindi </option>
+  <option> Spanish </option>
+  <option> French </option>
+  </select>
+  </div>
+
+  </div>
+  <div class="col-xs-12 phoneme">
+  <h3>  <b>p</b> </h3>
+  <p> If you speak <a href="arabic.html">Arabic</a> or <a href="somali.html">Somali</a> as your native language, speakers might perceive your pronunciation of as <a href="b.html">/b/</a> instead of <a href="p.html">/p/</a>.  One way to help distinguish between the two at the beginning of the word is to make sure you make create a large burst of air. Hold up a tissue, say a word starting with <a href="p.html">/p/</a>, and use enough air to make the tissue move. </p>
+
+  <h4 class="lessons"> Lessons on pronouncing /p/ </h4>
+  <p><a href="#"> B vs P</a></p>
+  <p><a href="#"> B vs V</a></p>
+  <p><a href="#">P vs F</a></p>
+  </div>
+  <div class="col-xs-12 phoneme">
+  <h3> o </h3>
+  <p>
+    Well, I don't think this the problem, this sound is common is most of the world's languages.  
+  </p>
+  </div>
+
+ <div class="col-xs-12 phoneme">
+  <h3> l </h3>
+  <p>
+      Speakers of East Asian languages such as Mandarin Chinese, Korean, and Japanese often produce a sound that sounds more like an <a href="r.html">/R/</a> to native English speakers. </p>  
+  </p>
+  </div>
+ <div class="col-xs-12 phoneme">
+  <h3> i: </h3>
+  <p>
+   In American English, the i sound is held for twice as long. This is one of the ways we distinguish it from itsimilar (and often challenging) counterpart,/I/. Make sure you are holding this sound for long enough.  
+  </p>
+  </div>
+ <div class="col-xs-12 phoneme">
+  <h3> s </h3>
+  <p>
+   Sssssssss like a snake</p> 
+<iframe src="http://giphy.com/embed/2lbhL8dSGMh8I" width="480" height="309" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/pretty-snake-jungle-book-2lbhL8dSGMh8I">via GIPHY</a>
+  </div>
+
+  </div>
+  </div>
+
+  </div>
+</body>
+</html>
+  

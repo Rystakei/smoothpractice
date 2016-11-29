@@ -1,0 +1,14 @@
+//stops
+
+{
+bilabial: {voiceless: "p", voiced: "b"}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: "t", voiced: "d"}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: "k", voiced: "g"},
+glottal: {voiceless: "?", voiced: null},
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
