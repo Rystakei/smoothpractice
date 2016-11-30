@@ -210,27 +210,27 @@ pharyngeal: {voiceless: null, voiced: null}
 }
 
 var nasals  = {
-bilabial: {voiceless: "p", voiced: "b"}, 
+bilabial: {voiceless: null, voiced: null}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
-alveolar: {voiceless: "t", voiced: "d"}, 
+alveolar: {voiceless: null, voiced: "n"}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
-velar: {voiceless: "k", voiced: "g"},
-glottal: {voiceless: "?", voiced: null},
+velar: {voiceless: null, voiced: null},
+glottal: {voiceless: null, voiced: null},
 uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
 
 var trills  = {
-bilabial: {voiceless: "p", voiced: "b"}, 
+bilabial: {voiceless: null, voiced: null}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
-alveolar: {voiceless: "t", voiced: "d"}, 
+alveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
-velar: {voiceless: "k", voiced: "g"},
-glottal: {voiceless: "?", voiced: null},
+velar: {voiceless: null, voiced: null},
+glottal: {voiceless: null, voiced: null},
 uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
@@ -261,8 +261,46 @@ uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
 
-var phones = [stops, fricatives, affricates, nasals, trills, laterals]; 
-var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "trill", 5: "lateral"};
+var approximants = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var lateral_approximants = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+var phones = [stops, fricatives, affricates, nasals, trills, approximants, lateral_approximants]; 
+ var phonesCondensed = [];
+ $.each(phones, function(k,v) {
+  $.each(v, function(key, value) {
+    phonesCondensed.push(value.voiceless); 
+    phonesCondensed.push(value.voiced); 
+  });
+});
+var nonEnglishPhonesCondensed = phonesCondensed;
+var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "trill", 
+5: "approximant",
+6: "lateral-approximant"};
+
 //end json
 //populate the stops row
 
@@ -270,10 +308,9 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
          console.log("K:", k, "V: ", v);
          $.each(v, function(key, value) {
             var rowName =  '.' + phoneLookup[k];
-            console.log("rowName: ", rowName);
             var newSpan = $('<span></span>').text(value.voiceless);
             var newSpanVoiced = $('<span></span>').text(value.voiced);
-            var voicelessTd = $('<td></td>').append(newSpan);
+            var voicelessTd = $('<td class="' + key + '"voiceless"></td>').append(newSpan);
             var voicedTd = $('<td></td>').append(newSpanVoiced);
             
            $(rowName + '-row').append(voicelessTd); 
@@ -281,6 +318,7 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
          });
        });
 
+//apply the L1 phones
 
        });
     </script>
@@ -346,25 +384,22 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
                 <tr class="stop-row">
                     <th scope="col">Stop</th>
                 </tr>
-                <tr>
+                <tr class="fricative-row">
                     <th scope="col">Fricative</th>
                 </tr>
-                <tr>
+                <tr class="affricate-row">
                     <th scope="col">Affricate</th>
                       <span class="phone">  </span>
                      </td>
                 </tr>
-                <tr>
+                <tr class="nasal-row">
                     <th scope="col">Nasal</th>
                 </tr>
-                <tr>
+                <tr class="lateral-approximant-row">
                     <th scope="col">Lateral Approximant</th>
                 </tr>
-                <tr>
-                    <th scope="col">Retroflex Approximant</th>
-                </tr>
-                <tr>
-                    <th scope="col">Glide</th>
+                <tr class="approximant-row">
+                    <th scope="col">Approximant</th>
                 </tr>
            </table>
           </div> 

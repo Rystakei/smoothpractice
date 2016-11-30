@@ -70,7 +70,20 @@ uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
 
-var laterals  = {
+var approximants  = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+var lateral_approximants = {
 bilabial:  {voiceless: null, voiced: null}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
@@ -98,4 +111,4 @@ uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
 
-var phones = [stops, fricatives, affricates, nasals, trills, laterals]; 
+var phones = [stops, fricatives, affricates, nasals, trills, approximants, lateral_approximants]; 
