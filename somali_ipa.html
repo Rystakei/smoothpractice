@@ -35,6 +35,14 @@
         position: fixed;
         z-index: 3;
       }
+      .problem-consonants {
+        font-size: 16px;
+        padding-bottom: 20px;
+      }
+      .problem-consonants .count {
+        font-weight: 700;
+      }
+
       h1,p.ipa {
         text-align: center;
         }
@@ -134,9 +142,10 @@
          .shared-phone {
          }
          .shared-phone:after {
-           padding: 10px;
            font-size: 12px;
-           content: "Great!";
+           padding: 3px;
+           content: '\f00c';
+           font-family: 'FontAwesome';
            color: green;
           }
 
@@ -170,15 +179,17 @@
 
 //stops
 
+var phoneSymbols = {eth:" &#240;", theta: "&#952", voiceless_uvular_fricative: "&#967;", voiceless_pharyngeal_fricative: "&#295;", voiced_pharyngeal_fricative: "&#661", voiced_uvular_stop: "&#610;", glottal_stop: "&#660;", voiced_retroflex_stop: "&#598", voiced_velar_nasal: "&#331;"};
 var stops = {
 bilabial: {voiceless: "p", voiced: "b"}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: "t", voiced: "d"}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
 velar: {voiceless: "k", voiced: "g"},
-glottal: {voiceless: "?", voiced: null},
+glottal: {voiceless: phoneSymbols["glottal_stop"], voiced: null},
 uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
@@ -186,8 +197,9 @@ pharyngeal: {voiceless: null, voiced: null}
 var fricatives = {
 bilabial: {voiceless: null, voiced: null}, 
 labiodental: {voiceless: "f", voiced: "v"}, 
-dental: {voiceless: "theta", voiced: "eth"}, 
+dental: {voiceless: phoneSymbols["theta"], voiced: phoneSymbols["eth"]}, 
 alveolar: {voiceless: "s", voiced: "z"}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: "esh", voiced: "zy"}, 
 velar: {voiceless: null, voiced: null},
@@ -201,8 +213,9 @@ bilabial:  {voiceless: null, voiced: null},
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
-palatal: {voiceless: null, voiced: null}, 
+palatal: {voiceless: "tsh", voiced: "dz"}, 
 velar: {voiceless: null, voiced: null}, 
 glottal: {voiceless: null, voiced: null}, 
 uvular: {voiceless: null, voiced: null},
@@ -210,13 +223,14 @@ pharyngeal: {voiceless: null, voiced: null}
 }
 
 var nasals  = {
-bilabial: {voiceless: null, voiced: null}, 
+bilabial: {voiceless: null, voiced: "m"}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: "n"}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
-velar: {voiceless: null, voiced: null},
+velar: {voiceless: null, voiced: phoneSymbols["voiced_velar_nasal"]},
 glottal: {voiceless: null, voiced: null},
 uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
@@ -227,6 +241,7 @@ bilabial: {voiceless: null, voiced: null},
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
 velar: {voiceless: null, voiced: null},
@@ -240,6 +255,7 @@ bilabial:  {voiceless: null, voiced: null},
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
 velar: {voiceless: null, voiced: null}, 
@@ -253,6 +269,7 @@ bilabial:  {voiceless: null, voiced: null},
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
 palatal: {voiceless: null, voiced: null}, 
 velar: {voiceless: null, voiced: null}, 
@@ -262,13 +279,13 @@ pharyngeal: {voiceless: null, voiced: null}
 }
 
 var approximants = {
-bilabial:  {voiceless: null, voiced: null}, 
+bilabial:  {voiceless: null, voiced: "w"}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: null}, 
 postalveolar: {voiceless: null, voiced: null}, 
-retroflex: {voiceless: null, voiced: null}, 
-palatal: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: "r"}, 
+palatal: {voiceless: null, voiced: "y"}, 
 velar: {voiceless: null, voiced: null}, 
 glottal: {voiceless: null, voiced: null}, 
 uvular: {voiceless: null, voiced: null},
@@ -279,6 +296,91 @@ var lateral_approximants = {
 bilabial:  {voiceless: null, voiced: null}, 
 labiodental: {voiceless: null, voiced: null}, 
 dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: "l"}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+var phones = [stops, fricatives, affricates, nasals, trills, lateral_approximants, approximants]; 
+
+var stops = {
+bilabial: {voiceless: null, voiced: "b"}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: "t", voiced: "d"}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: "k", voiced: "g"},
+glottal: {voiceless: phoneSymbols["glottal_stop"], voiced: null},
+uvular: {voiceless: null, voiced: phoneSymbols["voiced_uvular_stop"]},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var fricatives = {
+bilabial: {voiceless: null, voiced: null}, 
+labiodental: {voiceless: "f", voiced: null}, 
+dental: {voiceless: "theta", voiced: "&#240;"}, 
+alveolar: {voiceless: "s", voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: "esh", voiced: null}, 
+velar: {voiceless: null, voiced: null},
+glottal: {voiceless: "h", voiced: null},
+uvular: {voiceless: phoneSymbols["voiceless_uvular_fricative"], voiced: null},
+pharyngeal: {voiceless: phoneSymbols["voiceless_pharyngeal_fricative"], voiced: phoneSymbols["voiced_pharyngeal_fricative"]}
+}
+
+var affricates = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: "tsh", voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var nasals  = {
+bilabial: {voiceless: null, voiced: "m"}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: "n"}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null},
+glottal: {voiceless: null, voiced: null},
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var trills  = {
+bilabial: {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: "R"}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null},
+glottal: {voiceless: null, voiced: null},
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var laterals  = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
 alveolar: {voiceless: null, voiced: null}, 
 postalveolar: {voiceless: null, voiced: null}, 
 retroflex: {voiceless: null, voiced: null}, 
@@ -288,15 +390,96 @@ glottal: {voiceless: null, voiced: null},
 uvular: {voiceless: null, voiced: null},
 pharyngeal: {voiceless: null, voiced: null}
 }
-var phones = [stops, fricatives, affricates, nasals, trills, approximants, lateral_approximants]; 
+
+var blank = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var approximants = {
+bilabial:  {voiceless: null, voiced: "w"}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: null}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: "y"}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+
+var lateral_approximants = {
+bilabial:  {voiceless: null, voiced: null}, 
+labiodental: {voiceless: null, voiced: null}, 
+dental: {voiceless: null, voiced: null}, 
+alveolar: {voiceless: null, voiced: "l"}, 
+postalveolar: {voiceless: null, voiced: null}, 
+retroflex: {voiceless: null, voiced: null}, 
+palatal: {voiceless: null, voiced: null}, 
+velar: {voiceless: null, voiced: null}, 
+glottal: {voiceless: null, voiced: null}, 
+uvular: {voiceless: null, voiced: null},
+pharyngeal: {voiceless: null, voiced: null}
+}
+var somaliPhones = [stops, fricatives, affricates, nasals, trills, lateral_approximants, approximants]; 
+
+var mannerLookup = {0: "stop", 1: "fricative", 2: "affricate", 
+3: "nasal", 4: "trill", 5: "lateral-approximant", 6: "approximant"};
+
+var problemConsonants = [];
  var phonesCondensed = [];
- $.each(phones, function(k,v) {
-  $.each(v, function(key, value) {
-    phonesCondensed.push(value.voiceless); 
-    phonesCondensed.push(value.voiced); 
-  });
+ $.each(phones, function(index, manner) {
+  var rowName =  "." + mannerLookup[index];
+  $.each(manner, function(area, phones) {
+  console.log(somaliPhones);
+  console.log(somaliPhones, index);
+ 
+  function addPhoneTd(voice) {
+        var phoneText; 
+    //if they match
+    if (phones[voice] === somaliPhones[index][area][voice]) {
+        
+        if (phones[voice]) {
+          phoneText = phones[voice];
+         var phoneTd;
+        phoneTd = $('<td><span>' + phoneText  + '</span></td>');
+        phoneTd.addClass('shared-phone');
+        }
+        else {
+          phoneText = "";
+        phoneTd = $('<td><span>' + phoneText  + '</span></td>');
+        }
+        $(rowName + "-row").append(phoneTd); 
+      }
+    else if (phones[voice] !== null && phones[voice] !== somaliPhones[index][area][voice]) {
+        console.log("should add english phone");
+        var phoneText = phones[voice]; 
+        var phoneTd = $('<td class="english-phone"><span>' + phoneText  + '</span></td>');
+        $(rowName + "-row").append(phoneTd); 
+        problemConsonants.push(phones[voice]);
+    }
+    else {
+        var phoneText = somaliPhones[index][area][voice]; 
+        var phoneTd = $('<td class="origin-phone"><span>' + phoneText  + '</span></td>');
+        $(rowName + "-row").append(phoneTd); 
+    }
+  }
+  addPhoneTd("voiceless"); 
+  addPhoneTd("voiced"); 
+   });
 });
-var nonEnglishPhonesCondensed = phonesCondensed;
+$('.problem-consonants .count').text(problemConsonants.length); 
 var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "trill", 
 5: "approximant",
 6: "lateral-approximant"};
@@ -304,19 +487,6 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
 //end json
 //populate the stops row
 
-       $.each(phones, function(k, v) {
-         console.log("K:", k, "V: ", v);
-         $.each(v, function(key, value) {
-            var rowName =  '.' + phoneLookup[k];
-            var newSpan = $('<span></span>').text(value.voiceless);
-            var newSpanVoiced = $('<span></span>').text(value.voiced);
-            var voicelessTd = $('<td class="' + key + '"voiceless"></td>').append(newSpan);
-            var voicedTd = $('<td></td>').append(newSpanVoiced);
-            
-           $(rowName + '-row').append(voicelessTd); 
-            $(rowName + '-row').append(voicedTd); 
-         });
-       });
 
 //apply the L1 phones
 
@@ -366,6 +536,9 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
              <option value="1"> English only</option>
              <option value="2"> Somali only</option>
             </select>
+            <div class="problem-consonants">
+              There are <span class="count"></span> consonants
+              that might be hard for <span class="language">Somali</span> speakers. </div>
             <table>
               <thead>
                 <th></th>
@@ -374,10 +547,11 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
                 <th colspan="2">Interdental</th>
                 <th colspan="2">Alveolar</th>
                 <th colspan="2">Palatal-alveolar</th>
+                <th colspan="2">Retroflex</th>
                 <th colspan="2">Palatal</th>
                 <th colspan="2">Velar</th>
-                <th colspan="2">Uvular</th>
                 <th colspan="2">Glottal</th>
+                <th colspan="2">Uvular</th>
                 <th colspan="2">Pharyngeal</th>
                 </thead>
               <tbody>
@@ -394,6 +568,9 @@ var phoneLookup = {0: "stop", 1: "fricative", 2: "affricate", 3: "nasal", 4: "tr
                 </tr>
                 <tr class="nasal-row">
                     <th scope="col">Nasal</th>
+                </tr>
+                <tr class="trill-row">
+                  <th scope="col">Trill</th>
                 </tr>
                 <tr class="lateral-approximant-row">
                     <th scope="col">Lateral Approximant</th>
